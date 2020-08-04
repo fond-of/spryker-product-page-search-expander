@@ -1,0 +1,38 @@
+{
+  "mappings": {
+    "page": {
+      "properties": {
+        "model_key": {
+          "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": false
+        },
+        "style_key": {
+          "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": false
+        },
+        "size": {
+          "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": false
+        },
+        "model_short": {
+          "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": false
+        },
+        "is_sold_out": {
+          "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": false
+        },
+        "available": {
+          "type": "boolean",
+          "index": "not_analyzed",
+          "include_in_all": false
+        }
+      }
+    }
+  }
+}
