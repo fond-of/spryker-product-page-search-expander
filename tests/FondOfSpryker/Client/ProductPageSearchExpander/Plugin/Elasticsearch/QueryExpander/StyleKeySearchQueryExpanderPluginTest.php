@@ -7,21 +7,20 @@ use Elastica\Query;
 use Elastica\Query\BoolQuery;
 use Elastica\Query\Match as MatchQuery;
 use FondOfSpryker\Client\ProductPageSearchExpander\ProductPageSearchExpanderFactory;
-use ReflectionClass;
 use Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilder;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
 
-class ModelKeyAndSizeQueryExpanderPluginTest extends Unit
+class StyleKeySearchQueryExpanderPluginTest extends Unit
 {
-    /**
-     * @var \FondOfSpryker\Client\ProductPageSearchExpander\Plugin\Elasticsearch\QueryExpander\ModelKeyAndSizeQueryExpanderPlugin
-     */
-    protected $queryExpanderPlugin;
-
     /**
      * @var \Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilder|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $queryBuilderMock;
+
+    /**
+     * @var \FondOfSpryker\Client\ProductPageSearchExpander\Plugin\Elasticsearch\QueryExpander\StyleKeySearchQueryExpanderPlugin
+     */
+    protected $queryExpanderPlugin;
 
     /**
      * @var \FondOfSpryker\Client\ProductPageSearchExpander\ProductPageSearchExpanderFactory|\PHPUnit\Framework\MockObject\MockObject
@@ -29,14 +28,14 @@ class ModelKeyAndSizeQueryExpanderPluginTest extends Unit
     protected $factoryMock;
 
     /**
-     * @var \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface|\PHPUnit\Framework\MockObject\MockObject
-     */
-    protected $searchQueryMock;
-
-    /**
      * @var \Elastica\Query|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $elasticaQueryMock;
+
+    /**
+     * @var \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface|\PHPUnit\Framework\MockObject\MockObject
+     */
+    protected $searchQueryMock;
 
     /**
      * @var \Elastica\Query\Match|\PHPUnit\Framework\MockObject\MockObject
@@ -71,15 +70,15 @@ class ModelKeyAndSizeQueryExpanderPluginTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->queryBuilderMock = $this->getMockBuilder(QueryBuilder::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
         $this->matchQueryMock = $this->getMockBuilder(MatchQuery::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->queryExpanderPlugin = new ModelKeyAndSizeQueryExpanderPlugin();
+        $this->queryBuilderMock = $this->getMockBuilder(QueryBuilder::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->queryExpanderPlugin = new StyleKeySearchQueryExpanderPlugin();
         $this->queryExpanderPlugin->setFactory($this->factoryMock);
     }
 
@@ -88,45 +87,42 @@ class ModelKeyAndSizeQueryExpanderPluginTest extends Unit
      */
     public function testExpandQuerySuccess()
     {
-        /*$params = [
-            'model_key' => 'MODEL_KEY',
-            'size' => 'SIZE',
-        ];
-
-        $this->searchQueryMock->expects($this->exactly(2))
+        $this->searchQueryMock->expects($this->once())
             ->method('getSearchQuery')
             ->willReturn($this->elasticaQueryMock);
+
+        $this->factoryMock->expects($this->once())
+            ->method('createQueryBuilder')
+            ->willReturn($this->queryBuilderMock);
 
         $this->elasticaQueryMock->expects($this->once())
             ->method('getQuery')
             ->willReturn($this->boolQueryMock);
 
-        $this->factoryMock->expects($this->exactly(2))
-            ->method('createQueryBuilder')
-            ->willReturn($this->queryBuilderMock);
-
-        $this->queryBuilderMock->expects($this->exactly(2))
+        $this->queryBuilderMock->expects($this->once(1))
             ->method('createMatchQuery')
             ->willReturn($this->matchQueryMock);
 
-        $this->matchQueryMock->expects($this->exactly(2))
+        $this->matchQueryMock->expects($this->once())
             ->method('setField')
             ->willReturn($this->matchQueryMock);
 
-        $this->queryExpanderPlugin->expandQuery($this->searchQueryMock, $params);*/
+        $this->queryExpanderPlugin->expandQuery($this->searchQueryMock, [
+            'style_key' => 'style_key',
+        ]);
     }
 
     /**
-     * @param string $name
-     *
-     * @return \ReflectionMethod
+     * @return void
      */
-    protected function getMethod(string $name)
+    public function testExpandQueryFailedMissingParameter()
     {
-        $class = new ReflectionClass(ModelKeyAndSizeQueryExpanderPlugin::class);
-        $method = $class->getMethod($name);
-        $method->setAccessible(true);
+        $this->searchQueryMock->expects($this->never())
+            ->method('getSearchQuery')
+            ->willReturn($this->elasticaQueryMock);
 
-        return $method;
+        $this->queryExpanderPlugin->expandQuery($this->searchQueryMock, [
+            'wrong_key' => 'style_key',
+        ]);
     }
 }
