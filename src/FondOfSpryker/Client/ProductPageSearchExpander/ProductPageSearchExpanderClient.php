@@ -91,21 +91,21 @@ class ProductPageSearchExpanderClient extends AbstractClient implements ProductP
     }
 
     /**
-     * @deprecated use getProductsWithSameModelKeyAndStyleKey() instead
-     *
-     * @param string $modelKey
+     * @param string $modelShort
      * @param string $styleKey
      * @param string|null $optionSizeSwitcher
      *
      * @return array|null
+     *@deprecated use getProductsWithSameModelKeyAndStyleKey() instead
+     *
      */
-    public function getProductsSizeSwitcher(string $modelKey, string $styleKey, ?string $optionSizeSwitcher): ?array
+    public function getProductsSizeSwitcher(string $modelShort, string $styleKey, ?string $optionSizeSwitcher): ?array
     {
         return $this->getFactory()
             ->getCatalogClient()
             ->catalogSearch('', [
-                ProductPageSearchExpanderConstants::STYLE_KEY => $modelKey,
-                ProductPageSearchExpanderConstants::MODEL_KEY => $styleKey,
+                ProductPageSearchExpanderConstants::STYLE_KEY => $styleKey,
+                ProductPageSearchExpanderConstants::MODEL_SHORT => $modelShort,
                 ProductPageSearchExpanderConstants::OPTION_SIZE_SWITCHER => $optionSizeSwitcher,
             ]);
     }

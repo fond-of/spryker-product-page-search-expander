@@ -25,7 +25,7 @@ class SizeSwitcherSearchQueryExpanderPlugin extends AbstractPlugin implements Qu
     {
         $needle = [
             ProductPageSearchExpanderConstants::STYLE_KEY,
-            ProductPageSearchExpanderConstants::MODEL_KEY,
+            ProductPageSearchExpanderConstants::MODEL_SHORT,
             ProductPageSearchExpanderConstants::OPTION_SIZE_SWITCHER,
         ];
 
@@ -37,15 +37,24 @@ class SizeSwitcherSearchQueryExpanderPlugin extends AbstractPlugin implements Qu
 
         $boolQuery = $this->getBoolQuery($searchQuery->getSearchQuery());
 
-        $matchQuery = $this->getFactory()
+        $matchQueryModelShort = $this->getFactory()
             ->createQueryBuilder()
             ->createMatchQuery()
             ->setField(
-                ProductPageSearchExpanderConstants::MODEL_KEY,
-                $requestParameters[ProductPageSearchExpanderConstants::MODEL_KEY]
+                ProductPageSearchExpanderConstants::MODEL_SHORT,
+                $requestParameters[ProductPageSearchExpanderConstants::MODEL_SHORT]
             );
 
-        $boolQuery->addMust($matchQuery);
+        $matchQueryStyleKey = $this->getFactory()
+            ->createQueryBuilder()
+            ->createMatchQuery()
+            ->setField(
+                ProductPageSearchExpanderConstants::STYLE_KEY,
+                $requestParameters[ProductPageSearchExpanderConstants::STYLE_KEY]
+            );
+
+        $boolQuery->addMust($matchQueryModelShort);
+        $boolQuery->addMust($matchQueryStyleKey);
 
         return $searchQuery;
     }

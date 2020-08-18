@@ -46,13 +46,13 @@ interface ProductPageSearchExpanderClientInterface
     public function getSimilarProducts(string $modelKey, string $styleKey, ?string $optionDontMergeSizes): ?array;
 
     /**
-     * @deprecated use getProductsWithSameModelKeyAndStyleKey() instead
-     *
-     * @param string $modelKey
+     * @param string $modelShort
      * @param string $styleKey
      * @param string|null $optionSizeSwitcher
      *
      * @return array|null
+     *@deprecated use getProductsWithSameModelKeyAndStyleKey() instead
+     *
      */
-    public function getProductsSizeSwitcher(string $modelKey, string $styleKey, ?string $optionSizeSwitcher): ?array;
+    public function getProductsSizeSwitcher(string $modelShort, string $styleKey, ?string $optionSizeSwitcher): ?array;
 }
