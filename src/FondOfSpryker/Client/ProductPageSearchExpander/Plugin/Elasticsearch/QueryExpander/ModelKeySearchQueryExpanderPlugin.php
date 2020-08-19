@@ -5,8 +5,10 @@ namespace FondOfSpryker\Client\ProductPageSearchExpander\Plugin\Elasticsearch\Qu
 use Elastica\Query;
 use Elastica\Query\BoolQuery;
 use FondOfSpryker\Shared\ProductPageSearchExpander\ProductPageSearchExpanderConstants;
+use Generated\Shared\Search\PageIndexMap;
 use InvalidArgumentException;
 use Spryker\Client\Kernel\AbstractPlugin;
+use Spryker\Client\SearchElasticsearch\Config\SortConfig;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
 
@@ -43,8 +45,24 @@ class ModelKeySearchQueryExpanderPlugin extends AbstractPlugin implements QueryE
             );
 
         $boolQuery->addMust($matchQuery);
+        $this->addSort($searchQuery->getSearchQuery());
 
         return $searchQuery;
+    }
+
+    /**
+     * @param \Elastica\Query $searchQuery
+     *
+     * @return void
+     */
+    protected function addSort(Query $searchQuery): void
+    {
+        $searchQuery->addSort([
+            PageIndexMap::INTEGER_SORT . '.' . ProductPageSearchExpanderConstants::SIZE => [
+                'order' => SortConfig::DIRECTION_ASC,
+                'mode' => 'min',
+            ],
+        ]);
     }
 
     /**
