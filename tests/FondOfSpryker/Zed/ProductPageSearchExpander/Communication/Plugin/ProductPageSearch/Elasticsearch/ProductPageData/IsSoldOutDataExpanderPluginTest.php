@@ -35,13 +35,39 @@ class IsSoldOutDataExpanderPluginTest extends Unit
     /**
      * @return void
      */
-    public function testIsSoldOutExpanderPluginTestSuccess(): void
+    public function testIsSoldOutExpanderPluginTestSuccessYes(): void
     {
         $this->productAbstractPageSearchTransfer->expects($this->once())
             ->method('setIsSoldOut');
 
         $this->plugin->expandProductPageData([
-            'attributes' => json_encode(['is_sold_out' => 'test']),
+            'attributes' => json_encode(['is_sold_out' => 'yes']),
+        ], $this->productAbstractPageSearchTransfer);
+    }
+
+    /**
+     * @return void
+     */
+    public function testIsSoldOutExpanderPluginTestSuccessNo(): void
+    {
+        $this->productAbstractPageSearchTransfer->expects($this->once())
+            ->method('setIsSoldOut');
+
+        $this->plugin->expandProductPageData([
+            'attributes' => json_encode(['is_sold_out' => 'no']),
+        ], $this->productAbstractPageSearchTransfer);
+    }
+
+    /**
+     * @return void
+     */
+    public function testIsSoldOutExpanderPluginTestFailedArrayIndexMissing(): void
+    {
+        $this->productAbstractPageSearchTransfer->expects($this->once())
+            ->method('setIsSoldOut');
+
+        $this->plugin->expandProductPageData([
+            'attributes' => json_encode(['wrong_key' => 'foo']),
         ], $this->productAbstractPageSearchTransfer);
     }
 }

@@ -87,7 +87,7 @@ class ModelKeySearchExpanderPluginTest extends Unit
      */
     public function testExpandQuerySuccess()
     {
-        $this->searchQueryMock->expects($this->once())
+        $this->searchQueryMock->expects($this->exactly(2))
             ->method('getSearchQuery')
             ->willReturn($this->elasticaQueryMock);
 

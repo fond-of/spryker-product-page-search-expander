@@ -91,7 +91,7 @@ class SizeSwitcherSearchQueryExpanderPluginTest extends Unit
             ->method('getSearchQuery')
             ->willReturn($this->elasticaQueryMock);
 
-        $this->factoryMock->expects($this->once())
+        $this->factoryMock->expects($this->exactly(2))
             ->method('createQueryBuilder')
             ->willReturn($this->queryBuilderMock);
 
@@ -99,17 +99,17 @@ class SizeSwitcherSearchQueryExpanderPluginTest extends Unit
             ->method('getQuery')
             ->willReturn($this->boolQueryMock);
 
-        $this->queryBuilderMock->expects($this->once(1))
+        $this->queryBuilderMock->expects($this->exactly(2))
             ->method('createMatchQuery')
             ->willReturn($this->matchQueryMock);
 
-        $this->matchQueryMock->expects($this->once())
+        $this->matchQueryMock->expects($this->exactly(2))
             ->method('setField')
             ->willReturn($this->matchQueryMock);
 
         $this->queryExpanderPlugin->expandQuery($this->searchQueryMock, [
             'style_key' => 'style_key',
-            'model_key' => 'model_key',
+            'model_short' => 'model_short',
             'PLUGIN_SIZE_SWITCHER' => 'yes',
         ]);
     }

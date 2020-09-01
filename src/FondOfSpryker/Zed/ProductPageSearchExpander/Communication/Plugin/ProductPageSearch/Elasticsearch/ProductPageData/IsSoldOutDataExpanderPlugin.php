@@ -26,13 +26,16 @@ class IsSoldOutDataExpanderPlugin extends AbstractPlugin implements ProductPageD
     public function expandProductPageData(
         array $productData,
         ProductPageSearchTransfer $productAbstractPageSearchTransfer
-    ): void {
-        if (!isset($productData[ProductPageSearchExpanderConstants::PRODUCT_ATTRIBUTES])) {
-            return;
-        }
+    ): void
+    {
+        $soldOut = 'yes';
 
         $productAttributes = json_decode($productData[ProductPageSearchExpanderConstants::PRODUCT_ATTRIBUTES], true);
-        $soldOut = array_key_exists(ProductPageSearchExpanderConstants::IS_SOLD_OUT, $productAttributes) ?? false;
+
+        if (isset($productAttributes[ProductPageSearchExpanderConstants::IS_SOLD_OUT]) &&
+            $productAttributes[ProductPageSearchExpanderConstants::IS_SOLD_OUT] === 'no') {
+            $soldOut = 'no';
+        }
 
         $productAbstractPageSearchTransfer->setIsSoldOut($soldOut);
     }
