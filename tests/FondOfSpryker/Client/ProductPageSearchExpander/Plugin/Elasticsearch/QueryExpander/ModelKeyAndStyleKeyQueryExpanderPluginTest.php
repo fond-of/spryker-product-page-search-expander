@@ -7,9 +7,9 @@ use Elastica\Query;
 use Elastica\Query\BoolQuery;
 use Elastica\Query\Match as MatchQuery;
 use FondOfSpryker\Client\ProductPageSearchExpander\ProductPageSearchExpanderFactory;
+use FondOfSpryker\Shared\ProductPageSearchExpander\ProductPageSearchExpanderConstants;
 use Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilder;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
-use FondOfSpryker\Shared\ProductPageSearchExpander\ProductPageSearchExpanderConstants;
 
 class ModelKeyAndStyleKeyQueryExpanderPluginTest extends Unit
 {
@@ -83,6 +83,9 @@ class ModelKeyAndStyleKeyQueryExpanderPluginTest extends Unit
         $this->queryExpanderPlugin->setFactory($this->factoryMock);
     }
 
+    /**
+     * @return void
+     */
     public function testExpandQuerySuccess()
     {
         $this->searchQueryMock->expects($this->exactly(2))

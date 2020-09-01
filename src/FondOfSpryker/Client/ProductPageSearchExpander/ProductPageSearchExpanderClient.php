@@ -91,13 +91,13 @@ class ProductPageSearchExpanderClient extends AbstractClient implements ProductP
     }
 
     /**
+     * @deprecated use getProductsWithSameModelKeyAndStyleKey() instead
+     *
      * @param string $modelShort
      * @param string $styleKey
      * @param string|null $optionSizeSwitcher
      *
      * @return array|null
-     *@deprecated use getProductsWithSameModelKeyAndStyleKey() instead
-     *
      */
     public function getProductsSizeSwitcher(string $modelShort, string $styleKey, ?string $optionSizeSwitcher): ?array
     {

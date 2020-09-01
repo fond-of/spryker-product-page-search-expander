@@ -32,12 +32,13 @@ class IsSoldOutMapExpanderPlugin extends AbstractPlugin implements ProductAbstra
         PageMapBuilderInterface $pageMapBuilder,
         array $productData,
         LocaleTransfer $localeTransfer
-    ): PageMapTransfer
-    {
+    ): PageMapTransfer {
         $soldOut = 'yes';
 
-        if (isset($productData[ProductPageSearchExpanderConstants::IS_SOLD_OUT]) &&
-            $productData[ProductPageSearchExpanderConstants::IS_SOLD_OUT] === 'no') {
+        if (
+            isset($productData[ProductPageSearchExpanderConstants::IS_SOLD_OUT]) &&
+            $productData[ProductPageSearchExpanderConstants::IS_SOLD_OUT] === 'no'
+        ) {
             $soldOut = 'no';
         }
 
