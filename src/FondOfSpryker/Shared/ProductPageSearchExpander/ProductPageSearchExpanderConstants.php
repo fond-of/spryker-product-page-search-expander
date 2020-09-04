@@ -33,4 +33,6 @@ interface ProductPageSearchExpanderConstants
     public const PLUGIN_PRODUCT_SIZE = 'PLUGIN_PRODUCT_SIZE';
 
     public const PLUGIN_PRODUCT_STYLE_KEY = 'PLUGIN_PRODUCT_STYLE_KEY';
+
+    public const PLUGIN_PRODUCT_IMAGE_SETS = 'PLUGIN_PRODUCT_IMAGE_SETS';
 }

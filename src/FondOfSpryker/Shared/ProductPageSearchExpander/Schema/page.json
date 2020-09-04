@@ -31,6 +31,10 @@
           "type": "boolean",
           "index": "not_analyzed",
           "include_in_all": false
+        },
+        "image_sets": {
+          "type": "object",
+          "include_in_all": false
         }
       }
     }
