@@ -18,6 +18,8 @@ interface ProductPageSearchExpanderConstants
 
     public const AVAILABLE = 'available';
 
+    public const IMAGE_SETS = 'image_sets';
+
     public const OPTION_DONT_MERGE_SIZES = 'DONT_MERGE_SIZES';
 
     public const OPTION_SIZE_SWITCHER = 'PLUGIN_SIZE_SWITCHER';
@@ -33,4 +35,6 @@ interface ProductPageSearchExpanderConstants
     public const PLUGIN_PRODUCT_SIZE = 'PLUGIN_PRODUCT_SIZE';
 
     public const PLUGIN_PRODUCT_STYLE_KEY = 'PLUGIN_PRODUCT_STYLE_KEY';
+
+    public const PLUGIN_PRODUCT_IMAGE_SETS = 'PLUGIN_PRODUCT_IMAGE_SETS';
 }
