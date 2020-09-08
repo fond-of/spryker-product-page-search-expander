@@ -18,6 +18,8 @@ interface ProductPageSearchExpanderConstants
 
     public const AVAILABLE = 'available';
 
+    public const IMAGE_SETS = 'image_sets';
+
     public const OPTION_DONT_MERGE_SIZES = 'DONT_MERGE_SIZES';
 
     public const OPTION_SIZE_SWITCHER = 'PLUGIN_SIZE_SWITCHER';
