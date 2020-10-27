@@ -33,8 +33,7 @@ class ImageSetDataExpanderPlugin extends AbstractPlugin implements ProductPageDa
 
         } catch (Exception $exception) {
             $this->getLogger()->warning(
-                sprintf('No images for abstract product with id: %s', $productData['fk_product_abstract']),
-                $exception->getTrace()
+                sprintf('No images for abstract product with id: %s', $productData['fk_product_abstract'])
             );
         }
 
