@@ -32,7 +32,7 @@ class ImageSetDataExpanderPlugin extends AbstractPlugin implements ProductPageDa
             $productAbstractPageSearchTransfer->setImageSets($imageSets);
 
         } catch (Exception $exception) {
-            $this->getLogger()->warning(
+            $this->getLogger()->notice(
                 sprintf('No images for abstract product with id: %s', $productData['fk_product_abstract'])
             );
         }
