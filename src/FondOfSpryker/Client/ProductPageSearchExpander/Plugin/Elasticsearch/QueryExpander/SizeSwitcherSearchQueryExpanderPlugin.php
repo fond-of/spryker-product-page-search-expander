@@ -16,6 +16,11 @@ use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
 class SizeSwitcherSearchQueryExpanderPlugin extends AbstractPlugin implements QueryExpanderPluginInterface
 {
     /**
+     * Specification:
+     *  - Expands base query.
+     *
+     * @api
+     *
      * @param \Spryker\Client\Search\Dependency\Plugin\QueryInterface $searchQuery
      * @param array $requestParameters
      *

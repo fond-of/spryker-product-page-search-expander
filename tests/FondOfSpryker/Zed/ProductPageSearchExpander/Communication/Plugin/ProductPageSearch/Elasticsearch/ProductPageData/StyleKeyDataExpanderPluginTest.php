@@ -8,7 +8,7 @@ use Generated\Shared\Transfer\ProductPageSearchTransfer;
 class StyleKeyDataExpanderPluginTest extends Unit
 {
     /**
-     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\StyleKeyDataExpanderPlugin
+     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductPageData\StyleKeyDataExpanderPlugin
      */
     protected $plugin;
 

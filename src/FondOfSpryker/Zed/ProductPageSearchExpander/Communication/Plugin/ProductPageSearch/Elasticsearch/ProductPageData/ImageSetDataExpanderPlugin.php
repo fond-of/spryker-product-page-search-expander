@@ -3,8 +3,7 @@
 namespace FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductPageData;
 
 use ArrayObject;
-use Generated\Shared\Transfer\ProductImageSetTransfer;
-use Generated\Shared\Transfer\ProductImageTransfer;
+use Exception;
 use Generated\Shared\Transfer\ProductPageSearchImageSetsTransfer;
 use Generated\Shared\Transfer\ProductPageSearchImageTransfer;
 use Generated\Shared\Transfer\ProductPageSearchTransfer;
@@ -12,7 +11,6 @@ use Orm\Zed\ProductImage\Persistence\SpyProductImageSet;
 use Spryker\Shared\Log\LoggerTrait;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface;
-use Exception;
 
 /**
  * @method \Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface getQueryContainer()
@@ -22,7 +20,18 @@ class ImageSetDataExpanderPlugin extends AbstractPlugin implements ProductPageDa
 {
     use LoggerTrait;
 
-    public function expandProductPageData(array $productData, ProductPageSearchTransfer $productAbstractPageSearchTransfer)
+    /**
+     * Specification:
+     * - Expands the provided ProductAbstractPageSearch transfer object's data by reference.
+     *
+     * @api
+     *
+     * @param array $productData
+     * @param \Generated\Shared\Transfer\ProductPageSearchTransfer $productAbstractPageSearchTransfer
+     *
+     * @return void
+     */
+    public function expandProductPageData(array $productData, ProductPageSearchTransfer $productAbstractPageSearchTransfer): void
     {
         try {
             $imageSets = $this->generateImagesSets(
@@ -30,33 +39,31 @@ class ImageSetDataExpanderPlugin extends AbstractPlugin implements ProductPageDa
             );
 
             $productAbstractPageSearchTransfer->setImageSets($imageSets);
-
         } catch (Exception $exception) {
             $this->getLogger()->notice(
                 sprintf('No images for abstract product with id: %s', $productData['fk_product_abstract'])
             );
         }
-
     }
 
     /**
      * @param array $images
-     * @return \ArrayObject
      *
-     * @throws \Propel\Runtime\Exception\PropelException
+     * @return \ArrayObject
      */
     protected function generateImagesSets(array $images): ArrayObject
     {
         $imageSets = new ArrayObject();
 
-        if ($images === null) {
+        if (count($images) < 1) {
             return $imageSets;
         }
 
-        usort($images, function(SpyProductImageSet $a, SpyProductImageSet $b) {
+        usort($images, static function (SpyProductImageSet $a, SpyProductImageSet $b) {
             if ($a->getIdProductImageSet() == $b->getIdProductImageSet()) {
                 return 0;
             }
+
             return ($a->getIdProductImageSet() < $b->getIdProductImageSet()) ? -1 : 1;
         });
 

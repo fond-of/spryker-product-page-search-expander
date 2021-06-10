@@ -8,7 +8,7 @@ use Generated\Shared\Transfer\ProductPageSearchTransfer;
 class IsSoldOutDataExpanderPluginTest extends Unit
 {
     /**
-     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\IsSoldOutDataExpanderPlugin
+     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductPageData\IsSoldOutDataExpanderPlugin
      */
     protected $plugin;
 

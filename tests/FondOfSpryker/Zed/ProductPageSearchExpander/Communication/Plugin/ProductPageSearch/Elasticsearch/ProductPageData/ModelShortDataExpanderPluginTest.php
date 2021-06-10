@@ -8,7 +8,7 @@ use Generated\Shared\Transfer\ProductPageSearchTransfer;
 class ModelShortDataExpanderPluginTest extends Unit
 {
     /**
-     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\ModelShortDataExpanderPlugin
+     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductPageData\ModelShortDataExpanderPlugin
      */
     protected $plugin;
 

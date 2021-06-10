@@ -8,13 +8,13 @@ use Elastica\Query\BoolQuery;
 use Elastica\Query\Match as MatchQuery;
 use FondOfSpryker\Client\ProductPageSearchExpander\ProductPageSearchExpanderFactory;
 use FondOfSpryker\Shared\ProductPageSearchExpander\ProductPageSearchExpanderConstants;
-use Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilder;
+use Spryker\Client\SearchElasticsearch\Query\QueryBuilder;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
 
 class ModelKeyAndStyleKeyQueryExpanderPluginTest extends Unit
 {
     /**
-     * @var \Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilder|\PHPUnit\Framework\MockObject\MockObject
+     * @var \Spryker\Client\SearchElasticsearch\Query\QueryBuilder|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $queryBuilderMock;
 

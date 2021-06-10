@@ -14,7 +14,7 @@ use Spryker\DecimalObject\Decimal;
 class AvailableDataExpanderPluginTest extends Unit
 {
     /**
-     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\ModelKeyDataExpanderPlugin
+     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductPageData\ModelKeyDataExpanderPlugin
      */
     protected $plugin;
 

@@ -8,7 +8,7 @@ use Generated\Shared\Transfer\ProductPageSearchTransfer;
 class SizeDataExpanderPluginTest extends Unit
 {
     /**
-     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\SizeDataExpanderPlugin
+     * @var \FondOfSpryker\Zed\ProductPageSearchExpander\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductPageData\SizeDataExpanderPlugin
      */
     protected $plugin;
 

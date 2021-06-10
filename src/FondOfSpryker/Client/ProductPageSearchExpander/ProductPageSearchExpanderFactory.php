@@ -4,13 +4,13 @@ namespace FondOfSpryker\Client\ProductPageSearchExpander;
 
 use FondOfSpryker\Client\ProductPageSearchExpander\Dependency\Client\ProductPageSearchExpanderToCatalogClientInterface;
 use Spryker\Client\Kernel\AbstractFactory;
-use Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilder;
-use Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilderInterface;
+use Spryker\Client\SearchElasticsearch\Query\QueryBuilder;
+use Spryker\Client\SearchElasticsearch\Query\QueryBuilderInterface;
 
 class ProductPageSearchExpanderFactory extends AbstractFactory
 {
     /**
-     * @return \Spryker\Client\Search\Model\Elasticsearch\Query\QueryBuilder
+     * @return \Spryker\Client\SearchElasticsearch\Query\QueryBuilderInterface
      */
     public function createQueryBuilder(): QueryBuilderInterface
     {
