@@ -18,8 +18,7 @@
           "type": "keyword"
         },
         "available": {
-          "type": "boolean",
-          "index": "not_analyzed"
+          "type": "boolean"
         },
         "image_sets": {
           "type": "object"
