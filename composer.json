@@ -19,10 +19,7 @@
     "require-dev": {
       "spryker/code-sniffer": "^0.14.7",
       "fond-of-codeception/spryker": "dev-master as 1.0.0",
-      "codeception/codeception": "^2.5",
-      "mikey179/vfsstream": "^1.6",
-      "phpro/grumphp": "^0.14",
-      "sebastian/phpcpd": "^4.1"
+      "codeception/codeception": "^2.5"
     },
     "autoload": {
         "psr-4": {
@@ -32,7 +29,7 @@
     "autoload-dev": {
         "psr-4": {
             "FondOfSpryker\\": "tests/FondOfSpryker/",
-            "Generated\\": "tests/Generated/"
+            "Generated\\": "src/Generated/"
         }
     }
 }

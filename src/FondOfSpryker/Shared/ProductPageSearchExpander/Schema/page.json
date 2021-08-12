@@ -2,6 +2,9 @@
   "mappings": {
     "page": {
       "properties": {
+        "model": {
+          "type": "keyword"
+        },
         "model_key": {
           "type": "keyword"
         },

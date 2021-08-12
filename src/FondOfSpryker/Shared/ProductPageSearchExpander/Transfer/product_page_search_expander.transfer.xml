@@ -16,6 +16,7 @@
     </transfer>
 
     <transfer name="PageMap">
+        <property name="model" type="string" />
         <property name="modelKey" type="string" />
         <property name="styleKey" type="string" />
         <property name="size" type="string" />
@@ -32,6 +33,7 @@
         <property name="modelShort" type="string" />
         <property name="isSoldOut" type="string" />
         <property name="available" type="boolean" />
+        <property name="model" type="string"/>
         <property name="imageSets" singular="imageSet" type="ProductPageSearchImageSets[]"/>
     </transfer>
 
