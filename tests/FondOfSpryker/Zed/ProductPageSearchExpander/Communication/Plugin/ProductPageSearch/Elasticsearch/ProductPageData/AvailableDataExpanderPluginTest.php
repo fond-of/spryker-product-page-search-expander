@@ -142,7 +142,9 @@ class AvailableDataExpanderPluginTest extends Unit
             ->method('getStore')
             ->willReturn('STORE_NAME');
 
-        $this->plugin->expandProductPageData([], $this->productPageSearchTransfer);
+        $pageMapTransfer = $this->plugin->expandProductPageData([], $this->productPageSearchTransfer);
+
+        static::assertEquals(true, $pageMapTransfer->getAvailable());
     }
 
     /**
@@ -182,7 +184,9 @@ class AvailableDataExpanderPluginTest extends Unit
         $this->productAbstractAvailabilityTransfer->expects($this->never())
             ->method('getAvailability');
 
-        $this->plugin->expandProductPageData([], $this->productPageSearchTransfer);
+        $pageMapTransfer = $this->plugin->expandProductPageData([], $this->productPageSearchTransfer);
+
+        static::assertEquals(true, $pageMapTransfer->getAvailable());
     }
 
     /**
