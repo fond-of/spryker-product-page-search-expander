@@ -14,6 +14,8 @@ interface ProductPageSearchExpanderConstants
 
     public const SIZE = 'size';
 
+    public const STYLE_UNIQUE = 'style_unique';
+
     public const STYLE_KEY = 'style_key';
 
     public const AVAILABLE = 'available';
