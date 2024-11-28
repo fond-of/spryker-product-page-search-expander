@@ -58,13 +58,13 @@ class AvailableMapExpanderPlugin extends AbstractPlugin implements ProductAbstra
         }
 
         if ($productAbstractAvailabilityTransfer->getIsNeverOutOfStock() === true) {
-            $pageMapTransfer->setAvailable(true);
+            $pageMapTransfer->setAvailable(1);
             $pageMapBuilder->addSearchResultData($pageMapTransfer, ProductPageSearchExpanderConstants::AVAILABLE, true);
 
             return $pageMapTransfer;
         }
 
-        $available = $productAbstractAvailabilityTransfer
+        $available = (int)$productAbstractAvailabilityTransfer
             ->getAvailability()
             ->greaterThan(0);
 
