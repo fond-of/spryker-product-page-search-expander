@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <transfers xmlns="spryker:transfer-01"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
 
     <transfer name="ProductPageSearchImage">
         <property name="idProductImage" type="int"/>
@@ -22,7 +22,7 @@
         <property name="size" type="string" />
         <property name="modelShort" type="string" />
         <property name="isSoldOut" type="string" />
-        <property name="available" type="boolean" />
+        <property name="available" type="int" />
         <property name="imageSets" singular="imageSet" type="ProductPageSearchImageSets[]"/>
     </transfer>
 
@@ -32,7 +32,7 @@
         <property name="size" type="string" />
         <property name="modelShort" type="string" />
         <property name="isSoldOut" type="string" />
-        <property name="available" type="boolean" />
+        <property name="available" type="int" />
         <property name="model" type="string"/>
         <property name="imageSets" singular="imageSet" type="ProductPageSearchImageSets[]"/>
     </transfer>

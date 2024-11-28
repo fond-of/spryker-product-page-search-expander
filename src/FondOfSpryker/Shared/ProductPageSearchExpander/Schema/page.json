@@ -21,7 +21,7 @@
           "type": "keyword"
         },
         "available": {
-          "type": "boolean"
+          "type": "integer"
         },
         "image_sets": {
           "type": "object"

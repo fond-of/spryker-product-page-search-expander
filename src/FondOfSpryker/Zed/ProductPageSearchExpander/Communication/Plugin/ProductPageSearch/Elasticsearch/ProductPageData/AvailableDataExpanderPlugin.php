@@ -48,7 +48,7 @@ class AvailableDataExpanderPlugin extends AbstractPlugin implements ProductPageD
             return;
         }
 
-        $available = $productAbstractAvailabilityTransfer->getAvailability()->greaterThan(0) ? true : false;
+        $available = $productAbstractAvailabilityTransfer->getAvailability()->greaterThan(0) ? 1 : 0;
 
         $productAbstractPageSearchTransfer->setAvailable($available);
     }
